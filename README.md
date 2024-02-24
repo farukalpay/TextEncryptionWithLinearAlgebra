@@ -85,11 +85,33 @@ $$
     - Determine the remainder $r$ when dividing the size of the message by the size of the key matrix: $r = \text{size} - (n \mod \text{size})$.
     - Pad the message with spaces to make its size a multiple of the size of the key matrix: $M' = [m_1, m_2, \ldots, m_n, \underbrace{\text{space}, \text{space}, \ldots, \text{space}}_{r \text{ times}}]$.
   
-    - The message "hi" corresponds to the vector $\text{message} = [104, 105, 32]$. Since the size of the key matrix is $3$, we need to pad the message with spaces to make its size a multiple of $3$. Thus, the padded message becomes $[104, 105, 32, 32, 32, 32]$.
+    - The message $\text{"hi"}$ corresponds to the vector $\text{message} = [104, 105, 32]$. Since the size of the key matrix is $3$, we need to pad the message with spaces to make its size a multiple of $3$. Thus, the padded message becomes $[104, 105, 32, 32, 32, 32]$.
 
 2. **Message Vectorization**:
     - Split the padded message $M'$ into vectors of size $\text{size}$: $\text{messageVector}_1, \text{messageVector}_2, \ldots, \text{messageVector}_k$, where $k = \frac{n + r}{\text{size}}$.
     - Each $\text{messageVector}_i$ is a column vector of size $\text{size}$ containing consecutive elements from $M'$.
+  
+   - Generated messageVector column matrices for $[104, 105, 32, 32, 32, 32]$:
+
+$$
+\text{messageVector}_1 = 
+\begin{bmatrix}
+104 \\
+105 \\
+32 \\
+32 \\
+32
+\end{bmatrix},
+\quad
+\text{messageVector}_2 = 
+\begin{bmatrix}
+32 \\
+32 \\
+32 \\
+32 \\
+32
+\end{bmatrix}
+$$
 
 3. **Encryption**:
     - For each message vector $\text{messageVector}_i$:
