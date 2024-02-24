@@ -50,8 +50,7 @@ Add these integers to $\text{parsed}$: $[72, 101, 108, 108, 111]$.
    - Let $key$ be a square matrix of size $size \times size$, represented as $key = [key_{ij}]$ where $i, j = 0, 1, \ldots, size - 1$.
    - Each element $key_{ij}$ denotes a value in the key matrix.
   
-   - Consider the ASCII representation of the string ${\text{"hi"} + \text{Space (ASCII 32)}}$, where the ASCII values are $[104, 105, 32]$.\
-Let $key$ be a square matrix of size $3 \times 3$
+   - Consider the ASCII representation of the string ${\text{"hi"} + \text{Space (ASCII 32)}}$, where the ASCII values are $[104, 105, 32]$. Let $key$ be a square matrix of size $3 \times 3$
 
 2. **Random Number Generation Setup**:
    - Initialize a pseudo-random number generator with a random seed.
