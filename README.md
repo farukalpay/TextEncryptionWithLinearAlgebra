@@ -91,7 +91,7 @@ $$
     - Split the padded message $M'$ into vectors of size $\text{size}$: $\text{messageVector}_1, \text{messageVector}_2, \ldots, \text{messageVector}_k$, where $k = \frac{n + r}{\text{size}}$.
     - Each $\text{messageVector}_i$ is a column vector of size $\text{size}$ containing consecutive elements from $M'$.
   
-   - Generated messageVector column matrices for $[104, 105, 32, 32, 32, 32]$:
+   - Generated  $\text{messageVector}_i$ column matrices for $[104, 105, 32, 32, 32, 32]$:
 
 $$
 \text{messageVector}_1 = 
@@ -112,7 +112,7 @@ $$
 3. **Encryption**:
     - For each message vector $\text{messageVector}_i$:
         - Perform matrix-vector multiplication with the key matrix $K$: $\text{encryptedVector}_i = K \cdot \text{messageVector}_i$.
-        - After performing the matrix-vector multiplication, the resulting elements in $\text{encryptedVector}_i rounded to the nearest integer.
+        - After performing the matrix-vector multiplication, the resulting elements in $\text{encryptedVector}_i$ rounded to the nearest integer.
         - Each element of $\text{encryptedVector}_i$ represents an encrypted value corresponding to the corresponding message vector element.
 
 For $\text{messageVector}_1$:
@@ -169,4 +169,19 @@ $$
 
 4. **Result**:
     - Concatenate all elements of the encrypted vectors to form the encrypted message $E$: $E = [\text{encryptedVector}_1[1], \text{encryptedVector}_1[2], \ldots, \text{encryptedVector}_k[\text{size}], \ldots]$.
+  
+    - The given key matrix for the encryption process is:
 
+$$
+K = 
+\begin{bmatrix}
+1.25024 & -2.33247 & -3.94038 \\
+3.39427 & 0.800577 & -5.14653 \\
+-6.62477 & -1.65797 & 3.84418
+\end{bmatrix}$$
+
+    - The resulting encrypted message for the input $\text{"hi"}$ with this key matrix is:
+
+$$
+\text{E = [-240, 272, -740, -161, -30, -142]}
+$$
