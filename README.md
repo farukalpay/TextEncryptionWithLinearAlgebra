@@ -118,6 +118,42 @@ $$
         - Perform matrix-vector multiplication with the key matrix $K$: $\text{encryptedVector}_i = K \cdot \text{messageVector}_i$.
         - Each element of $\text{encryptedVector}_i$ represents an encrypted value corresponding to the corresponding message vector element.
 
+For $\text{messageVector}_1$:
+
+$$
+\text{encryptedVector}_1 = K \cdot \text{messageVector}_1 = 
+\begin{bmatrix}
+1.25024 & -2.33247 & -3.94038 \\
+3.39427 & 0.800577 & -5.14653 \\
+-6.62477 & -1.65797 & 3.84418
+\end{bmatrix}
+\begin{bmatrix}
+104 \\
+105 \\
+32 \\
+32 \\
+32
+\end{bmatrix}
+$$
+
+For $\text{messageVector}_2$:
+
+$$
+\text{encryptedVector}_2 = K \cdot \text{messageVector}_2 = 
+\begin{bmatrix}
+1.25024 & -2.33247 & -3.94038 \\
+3.39427 & 0.800577 & -5.14653 \\
+-6.62477 & -1.65797 & 3.84418
+\end{bmatrix}
+\begin{bmatrix}
+32 \\
+32 \\
+32 \\
+32 \\
+32
+\end{bmatrix}
+$$
+
 4. **Result**:
     - Concatenate all elements of the encrypted vectors to form the encrypted message $E$: $E = [\text{encryptedVector}_1[1], \text{encryptedVector}_1[2], \ldots, \text{encryptedVector}_k[\text{size}], \ldots]$.
 
