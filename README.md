@@ -67,6 +67,14 @@ Let $key$ be a square matrix of size $3 \times 3$
 
 5. **Return the Key**:
    - Once all elements of the matrix $key$ have been assigned random values, return the resulting key matrix $key$.
-  
-Generated key matrix for $[104, 105, 32]$:
+   
+   - Generated key matrix for $[104, 105, 32]$:
+
+$$
+\begin{bmatrix}
+1.25024 & -2.33247 & -3.94038 \\
+3.39427 & 0.800577 & -5.14653 \\
+-6.62477 & -1.65797 & 3.84418
+\end{bmatrix}
+$$
 
