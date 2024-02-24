@@ -170,18 +170,9 @@ $$
 4. **Result**:
     - Concatenate all elements of the encrypted vectors to form the encrypted message $E$: $E = [\text{encryptedVector}_1[1], \text{encryptedVector}_1[2], \ldots, \text{encryptedVector}_k[\text{size}], \ldots]$.
   
-    - The given key matrix for the encryption process is:
-
-$$
-K = 
-\begin{bmatrix}
-1.25024 & -2.33247 & -3.94038 \\
-3.39427 & 0.800577 & -5.14653 \\
--6.62477 & -1.65797 & 3.84418
-\end{bmatrix}$$
-
-    - The resulting encrypted message for the input $\text{"hi"}$ with this key matrix is:
-
+    - The resulting encrypted message corresponding to the input $\text{"hi"}$ encrypted using this key matrix is:
+      
 $$
 \text{E = [-240, 272, -740, -161, -30, -142]}
 $$
+
