@@ -2,7 +2,7 @@
 
 This project implements a text encryption and decryption system using a matrix-based encryption technique. This project serves as an educational and practical exploration of matrix-based encryption techniques, demonstrating the fundamental concepts of encryption and decryption in a user-friendly manner.
 
-## Encryption Algorithm
+## Explanation of the Algorithm
 
 ### Convert Input String to ASCII Integer
 
@@ -77,4 +77,25 @@ $$
 -6.62477 & -1.65797 & 3.84418
 \end{bmatrix}
 $$
+
+### Encryption Algorithm
+
+1. **Message Padding**:
+    - Given a message $M$ represented as a vector of integers $\text{message} = [m_1, m_2, \ldots, m_n]$, where $n$ is the size of the message and $\text{size}$ is the size of the key matrix.
+    - Determine the remainder $r$ when dividing the size of the message by the size of the key matrix: $r = \text{size} - (n \mod \text{size})$.
+    - Pad the message with spaces to make its size a multiple of the size of the key matrix: $M' = [m_1, m_2, \ldots, m_n, \underbrace{\text{space}, \text{space}, \ldots, \text{space}}_{r \text{ times}}]$.
+  
+    - The message "hi" corresponds to the vector $\text{message} = [104, 105, 32]$. Since the size of the key matrix is $3$, we need to pad the message with spaces to make its size a multiple of $3$. Thus, the padded message becomes $[104, 105, 32, 32, 32, 32]$.
+
+2. **Message Vectorization**:
+    - Split the padded message $M'$ into vectors of size $\text{size}$: $\text{messageVector}_1, \text{messageVector}_2, \ldots, \text{messageVector}_k$, where $k = \frac{n + r}{\text{size}}$.
+    - Each $\text{messageVector}_i$ is a column vector of size $\text{size}$ containing consecutive elements from $M'$.
+
+3. **Encryption**:
+    - For each message vector $\text{messageVector}_i$:
+        - Perform matrix-vector multiplication with the key matrix $K$: $\text{encryptedVector}_i = K \cdot \text{messageVector}_i$.
+        - Each element of $\text{encryptedVector}_i$ represents an encrypted value corresponding to the corresponding message vector element.
+
+4. **Result**:
+    - Concatenate all elements of the encrypted vectors to form the encrypted message $E$: $E = [\text{encryptedVector}_1[1], \text{encryptedVector}_1[2], \ldots, \text{encryptedVector}_k[\text{size}], \ldots]$.
 
