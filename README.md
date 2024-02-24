@@ -98,15 +98,11 @@ $$
 \begin{bmatrix}
 104 \\
 105 \\
-32 \\
-32 \\
 32
 \end{bmatrix},
 \quad
 \text{messageVector}_2 = 
 \begin{bmatrix}
-32 \\
-32 \\
 32 \\
 32 \\
 32
@@ -116,6 +112,7 @@ $$
 3. **Encryption**:
     - For each message vector $\text{messageVector}_i$:
         - Perform matrix-vector multiplication with the key matrix $K$: $\text{encryptedVector}_i = K \cdot \text{messageVector}_i$.
+        - After performing the matrix-vector multiplication, the resulting elements in $\text{encryptedVector}_i rounded to the nearest integer.
         - Each element of $\text{encryptedVector}_i$ represents an encrypted value corresponding to the corresponding message vector element.
 
 For $\text{messageVector}_1$:
@@ -130,9 +127,17 @@ $$
 \begin{bmatrix}
 104 \\
 105 \\
-32 \\
-32 \\
 32
+\end{bmatrix} =
+\begin{bmatrix}
+-(int)240.97655 \\
+(int)272.375705 \\
+-(int)740.04917
+\end{bmatrix} =
+\begin{bmatrix}
+-240 \\
+272 \\
+-740
 \end{bmatrix}
 $$
 
@@ -148,9 +153,17 @@ $$
 \begin{bmatrix}
 32 \\
 32 \\
-32 \\
-32 \\
 32
+\end{bmatrix} =
+\begin{bmatrix}
+-(int)160.72352 \\
+-(int)30.453856 \\
+-(int)142.03392
+\end{bmatrix} =
+\begin{bmatrix}
+-160 \\
+-30 \\
+-142
 \end{bmatrix}
 $$
 
