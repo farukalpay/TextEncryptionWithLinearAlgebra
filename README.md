@@ -70,6 +70,7 @@ Add these integers to $\text{parsed}$: $[72, 101, 108, 108, 111]$.
    - Generated key matrix for $[104, 105, 32]$:
 
 $$
+\text{K} = 
 \begin{bmatrix}
 1.25024 & -2.33247 & -3.94038 \\
 3.39427 & 0.800577 & -5.14653 \\
@@ -108,7 +109,9 @@ $$
 \end{bmatrix}
 $$
 
+
 3. **Encryption**:
+
     - For each message vector $\text{messageVector}_i$:
         - Perform matrix-vector multiplication with the key matrix $K$: $\text{encryptedVector}_i = K \cdot \text{messageVector}_i$.
         - After performing the matrix-vector multiplication, the resulting elements in $\text{encryptedVector}_i$ rounded to the nearest integer.
@@ -170,8 +173,64 @@ $$
     - Concatenate all elements of the encrypted vectors to form the encrypted message $E$: $E = [\text{encryptedVector}_1[1], \text{encryptedVector}_1[2], \ldots, \text{encryptedVector}_k[\text{size}], \ldots]$.
   
     - The resulting encrypted message corresponding to the input $\text{"hi"}$ encrypted using this key matrix is:
-      
+ 
 $$
 \text{E = [-240, 272, -740, -161, -30, -142]}
 $$
 
+### Decryption Algorithm
+
+1. **Initialization**:
+    - Let $\text{EncryptedMessage} = [e_1, e_2, \ldots, e_n]$ be the encrypted message represented as a vector of integers, where $n$ is the size of the encrypted message.
+
+    - Consider the encrypted message ${E = [-240, 272, -740, -161, -30, -142]}$
+    - Key matrix $K$ used for encryption:
+  
+$$
+\text{K} = 
+\begin{bmatrix}
+1.25024 & -2.33247 & -3.94038 \\
+3.39427 & 0.800577 & -5.14653 \\
+-6.62477 & -1.65797 & 3.84418
+\end{bmatrix}
+$$
+
+2. **Segmentation**:
+- Divide the encrypted message into segments, each consisting of $\text{size}$ elements, where $\text{size}$ is the size of the key matrix $K$.
+- Segments of the encrypted message, denoted as $\text{Segment}_i$, are obtained by splitting $\text{EncryptedMessage}$ into $\frac{n}{\text{size}}$ segments, where $i$ ranges from $1$ to $\frac{n}{\text{size}}$.
+- Each segment $\text{Segment}_i$ consists of $\text{size}$ consecutive elements starting from index $i \times \text{size}$.
+- Each segment $\text{Segment}_i$ is represented as a column matrix of size $\text{size}$:
+
+$$
+\text{Segment}\_i =
+\begin{bmatrix} 
+e_{(i-1) \times \text{size} + 1} \\ 
+e_{(i-1) \times \text{size} + 2} \\ 
+\vdots \\ 
+e_{i \times \text{size}}  
+\end{bmatrix}
+$$
+
+   - Segmented column matrices for ${E = [-240, 272, -740, -161, -30, -142]}$:
+
+$$
+\text{EncryptedVector}_1 = 
+\begin{bmatrix}
+-240 \\ 
+272 \\ 
+-740 
+\end{bmatrix},
+\quad
+\text{EncryptedVector}_2 = 
+\begin{bmatrix}
+-161 \\ 
+-30 \\ 
+-142 \\ 
+\end{bmatrix}
+$$
+
+3. **Matrix Multiplication**:
+   - For each segment $\text{encryptedVector}_i$:
+      - Perform matrix-vector multiplication with the inverse key matrix $K^{-1}$: $\text{decryptedVector}_i = K^{-1} \cdot \text{encryptedVector}_i$
+      - After performing the matrix-vector multiplication, the resulting elements in $\text{decryptedVector}_i$ rounded to the nearest integer.
+      - Each element of $\text{decryptedVector}_i$ represents an decrypted ASCII value corresponding to the corresponding message vector element.
