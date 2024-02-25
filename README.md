@@ -196,10 +196,14 @@ $$
 $$
 
 2. **Segmentation**:
-- Divide the encrypted message into segments, each consisting of $\text{size}$ elements, where $\text{size}$ is the size of the key matrix $K$.
-- Segments of the encrypted message, denoted as $\text{Segment}_i$, are obtained by splitting $\text{EncryptedMessage}$ into $\frac{n}{\text{size}}$ segments, where $i$ ranges from $1$ to $\frac{n}{\text{size}}$.
-- Each segment $\text{Segment}_i$ consists of $\text{size}$ consecutive elements starting from index $i \times \text{size}$.
-- Each segment $\text{Segment}_i$ is represented as a column matrix of size $\text{size}$:
+   
+    - Divide the encrypted message into segments, each consisting of $\text{size}$ elements, where $\text{size}$ is the size of the key matrix $K$.
+      
+    - Segments of the encrypted message, denoted as $\text{Segment}_i$, are obtained by splitting $\text{EncryptedMessage}$ into $\frac{n}{\text{size}}$ segments, where $i$ ranges from $1$ to $\frac{n}{\text{size}}$.
+      
+    - Each segment $\text{Segment}_i$ consists of $\text{size}$ consecutive elements starting from index $i \times \text{size}$.
+      
+    - Each segment $\text{Segment}_i$ is represented as a column matrix of size $\text{size}$:
 
 $$
 \text{Segment}\_i =
@@ -230,6 +234,7 @@ $$
 $$
 
 3. **Matrix Multiplication**:
+   
    - For each segment $\text{encryptedVector}_i$:
       - Perform matrix-vector multiplication with the inverse key matrix $K^{-1}$: $\text{decryptedVector}_i = K^{-1} \cdot \text{encryptedVector}_i$
       - After performing the matrix-vector multiplication, the resulting elements in $\text{decryptedVector}_i$ rounded to the nearest integer.
