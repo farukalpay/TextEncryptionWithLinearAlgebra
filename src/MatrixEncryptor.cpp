@@ -40,7 +40,7 @@ std::vector<int> MatrixEncryptor::encrypt(const std::vector<int>& message) const
         }
         Eigen::VectorXd encryptedVector = keyMatrix * messageVector;
         for (int j = 0; j < size; ++j) {
-            encrypted_message.push_back(static_cast<int>(encryptedVector(j)));
+            encrypted_message.push_back(static_cast<int>(std::round(encryptedVector(j))));
         }
     }
     return encrypted_message;
@@ -57,7 +57,7 @@ std::vector<int> MatrixEncryptor::decrypt(const std::vector<int>& encrypted_mess
         Eigen::VectorXd decryptedVector = inverseKey * encryptedVector;
         for (int j = 0; j < size; ++j) {
             // Round to the nearest integer before converting back to int
-            int decrypted_value = static_cast<int>(decryptedVector(j) + 0.5);
+            int decrypted_value = static_cast<int>(std::round(decryptedVector(j)));
             decrypted_message.push_back(decrypted_value);
         }
     }
