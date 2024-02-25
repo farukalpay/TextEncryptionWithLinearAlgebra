@@ -293,10 +293,12 @@ $$
 $$
 
 5. **Result**:
-   - Concatenate all elements of the decrypted message vectors to form the decrypted message $D$: $D = [\text{decryptedVector}_1[1], \text{decryptedVector}_1[2], \ldots, \text{decryptedVector}_k[\text{size}], \ldots]$.
+   - Concatenate all elements of the decrypted message vectors to form the decrypted message $D$: $D = [\text{decryptedVector}_1[1], \text{decryptedVector}_1[2], \ldots, \text{decryptedVector}_k[\text{size}], \ldots]$. The resulting decrypted message is a sequence of ASCII characters obtained by converting each integer in $D$ to its corresponding ASCII character.
      
    - The resulting decrypted message corresponding to the encrypted message ${E = [-241, 272, -740, -161, -30, -142]}$ decrypted using the key matrix is:
    
 $$
 \text{D = [104, 105, 32, 32, 32, 32]}
 $$
+
+The decrypted message $D$ is obtained by converting each integer in the sequence to its corresponding ASCII character. Therefore, the decrypted message is $\text{"hi    "}$.
