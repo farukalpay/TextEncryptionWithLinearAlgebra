@@ -132,12 +132,12 @@ $$
 32
 \end{bmatrix} =
 \begin{bmatrix}
--(int)240.97655 \\
-(int)272.375705 \\
--(int)740.04917
+-(int + round)240.97655 \\
+(int + round)272.375705 \\
+-(int + round)740.04917
 \end{bmatrix} =
 \begin{bmatrix}
--240 \\
+-241 \\
 272 \\
 -740
 \end{bmatrix}
@@ -158,12 +158,12 @@ $$
 32
 \end{bmatrix} =
 \begin{bmatrix}
--(int)160.72352 \\
--(int)30.453856 \\
--(int)142.03392
+-(int + round)160.72352 \\
+-(int + round)30.453856 \\
+-(int + round)142.03392
 \end{bmatrix} =
 \begin{bmatrix}
--160 \\
+-161 \\
 -30 \\
 -142
 \end{bmatrix}
@@ -175,7 +175,7 @@ $$
     - The resulting encrypted message corresponding to the input $\text{"hi"}$ encrypted using this key matrix is:
  
 $$
-\text{E = [-240, 272, -740, -161, -30, -142]}
+\text{E = [-241, 272, -740, -161, -30, -142]}
 $$
 
 ### Decryption Algorithm
@@ -183,7 +183,7 @@ $$
 1. **Initialization**:
     - Let $\text{EncryptedMessage} = [e_1, e_2, \ldots, e_n]$ be the encrypted message represented as a vector of integers, where $n$ is the size of the encrypted message.
 
-    - Consider the encrypted message ${E = [-240, 272, -740, -161, -30, -142]}$
+    - Consider the encrypted message ${E = [-241, 272, -740, -161, -30, -142]}$
     - Key matrix $K$ used for encryption:
   
 $$
@@ -215,12 +215,12 @@ e_{i \times \text{size}}
 \end{bmatrix}
 $$
 
-   - Segmented column matrices for ${E = [-240, 272, -740, -161, -30, -142]}$:
+   - Segmented column matrices for ${E = [-241, 272, -740, -161, -30, -142]}$:
 
 $$
 \text{EncryptedVector}_1 = 
 \begin{bmatrix}
--240 \\ 
+-241 \\ 
 272 \\ 
 -740 
 \end{bmatrix},
@@ -239,3 +239,64 @@ $$
       - Perform matrix-vector multiplication with the inverse key matrix $K^{-1}$: $\text{decryptedVector}_i = K^{-1} \cdot \text{encryptedVector}_i$
       - After performing the matrix-vector multiplication, the resulting elements in $\text{decryptedVector}_i$ rounded to the nearest integer.
       - Each element of $\text{decryptedVector}_i$ represents an decrypted ASCII value corresponding to the corresponding message vector element.
+
+For $\text{encryptedVector}_1$:
+
+$$
+\text{decryptedVector}_1 = K^{-1} \cdot \text{encryptedVector}_1 = 
+\begin{bmatrix}
+0.09985 & -0.28369 & -0.27745 \\
+-0.38522 & 0.38983 & 0.12703 \\
+0.00592 & -0.32077 & -0.16323
+\end{bmatrix}
+\begin{bmatrix}
+-241 \\
+272 \\
+-740
+\end{bmatrix} =
+\begin{bmatrix}
+(int + round)104.09060 \\
+(int + round)104.86881 \\
+(int + round)32.11234
+\end{bmatrix} =
+\begin{bmatrix}
+104 \\
+105 \\
+32
+\end{bmatrix}
+$$
+
+For $\text{encryptedVector}_2$:
+
+$$
+\text{decryptedVector}_2 = K^{-1} \cdot \text{encryptedVector}_2 = 
+\begin{bmatrix}
+0.09985 & -0.28369 & -0.27745 \\
+-0.38522 & 0.38983 & 0.12703 \\
+0.00592 & -0.32077 & -0.16323
+\end{bmatrix}
+\begin{bmatrix}
+-161 \\
+-30 \\
+-142
+\end{bmatrix} =
+\begin{bmatrix}
+(int + round)31.83422 \\
+(int + round)32.28774 \\
+(int + round)31.84724
+\end{bmatrix} =
+\begin{bmatrix}
+32 \\
+32 \\
+32
+\end{bmatrix}
+$$
+
+5. **Result**:
+   - Concatenate all elements of the decrypted message vectors to form the decrypted message $D$: $D = [\text{decryptedVector}_1[1], \text{decryptedVector}_1[2], \ldots, \text{decryptedVector}_k[\text{size}], \ldots]$.
+     
+   - The resulting decrypted message corresponding to the encrypted message ${E = [-241, 272, -740, -161, -30, -142]}$ decrypted using the key matrix is:
+   
+$$
+\text{D = [104, 105, 32, 32, 32, 32]}
+$$
