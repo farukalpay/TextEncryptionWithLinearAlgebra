@@ -9,7 +9,7 @@
 
 void clearScreen() {
 #ifdef _WIN32
-    std::system("cls"); // Clear screen for Windows
+    //std::system("cls"); // Clear screen for Windows
 #else
     std::system("clear"); // Clear screen for Unix-like systems
 #endif
@@ -34,6 +34,7 @@ void displayDecryptionOptions() {
     std::cout << "(4) Exit" << std::endl;
 }
 
+//Text encryption
 void InputHandler::encryptText() {
 
     char textChoice;
@@ -48,6 +49,7 @@ void InputHandler::encryptText() {
         std::string input_text;
         std::getline(std::cin, input_text);
         message = MatrixEncryptor::parseInput(input_text);
+
     }
     else if (textChoice == 'f' || textChoice == 'F') {
         std::string filename;
@@ -75,7 +77,6 @@ void InputHandler::encryptText() {
     }
 
     int keySize = message.size();
-
     char keyChoice;
     std::cout << "Do you want to use a custom key or generate it automatically? (c/g): ";
     std::cin >> keyChoice;
@@ -156,6 +157,13 @@ void InputHandler::encryptText() {
             }
             std::cout << "\n\nKey used for encryption:" << std::endl;
             std::cout << encryptor.getKey() << std::endl;
+
+            std::cout << "Original message (ASCII values): ";
+            for (int num : message) {
+                std::cout << num << " ";
+            }
+            std::cout << std::endl;
+
             break;
         case 6:
             clearScreen();
@@ -308,7 +316,7 @@ void InputHandler::decryptText() {
         std::cout << "Empty message. Decryption aborted." << std::endl;
     }
 }
-
+//To save decrypted message to file
 void InputHandler::saveToFile(const std::vector<int>& data, const std::string& filename) {
     std::ofstream file(filename);
     if (file.is_open()) {
@@ -323,6 +331,7 @@ void InputHandler::saveToFile(const std::vector<int>& data, const std::string& f
     }
 }
 
+//To save key to file
 void InputHandler::saveKeyToFile(const Eigen::MatrixXd& key, const std::string& filename) {
     std::ofstream file(filename);
     if (file.is_open()) {
@@ -335,7 +344,7 @@ void InputHandler::saveKeyToFile(const Eigen::MatrixXd& key, const std::string& 
     }
 }
 
-
+//To read key from file
 Eigen::MatrixXd InputHandler::readKeyFromFile(const std::string& filename) {
     std::ifstream file(filename);
     Eigen::MatrixXd key;
