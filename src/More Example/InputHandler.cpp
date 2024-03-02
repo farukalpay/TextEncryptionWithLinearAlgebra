@@ -30,8 +30,11 @@ void displayDecryptionOptions() {
     std::cout << "Options:" << std::endl;
     std::cout << "(1) Show Decrypted Data" << std::endl;
     std::cout << "(2) Save Decrypted Data" << std::endl;
-    std::cout << "(3) Back to Menu" << std::endl;
-    std::cout << "(4) Exit" << std::endl;
+    std::cout << "(3) Show Key" << std::endl;
+    std::cout << "(4) Save Key" << std::endl;
+    std::cout << "(5) Show All Values" << std::endl;
+    std::cout << "(6) Back to Menu" << std::endl;
+    std::cout << "(7) Exit" << std::endl;
 }
 
 //Text encryption
@@ -265,7 +268,7 @@ void InputHandler::decryptText() {
             switch (choice) {
             case 1:
                 clearScreen();
-                std::cout << "Decrypted text: ";
+                std::cout << "Decrypted text:\n";
                 for (int num : decrypted_message) {
                     std::cout << static_cast<char>(num);
                 }
@@ -279,13 +282,45 @@ void InputHandler::decryptText() {
                 std::cin.ignore();
                 std::getline(std::cin, fileloc);
                 saveToFile(decrypted_message, fileloc);
-                std::cout << "Decrypted data saved." << std::endl;
+                std::cout << "Encrypted data saved." << std::endl;
                 break;
             }
             case 3:
                 clearScreen();
-                return; // Back to Menu
+                std::cout << "Key used for decryption:" << std::endl;
+                std::cout << decryptor.getKey() << std::endl;
+                break;
             case 4:
+            {
+                clearScreen();
+                std::string fileloc;
+                std::cout << "Enter the path and filename to save the key matrix: ";
+                std::cin.ignore();
+                std::getline(std::cin, fileloc);
+                saveKeyToFile(decryptor.getKey(), fileloc);
+                std::cout << "Key matrix data saved." << std::endl;
+                break;
+            }
+            case 5:
+                clearScreen();
+                std::cout << "Encrypted text: \n";
+                for (int num : input_encrypted_message) {
+                    std::cout << (num) << " ";
+                }
+                std::cout << std::endl;
+                std::cout << "Decrypted text: \n";
+                for (int num : decrypted_message) {
+                    std::cout << static_cast<char>(num);
+                }
+                std::cout << "\n\nKey used for decryption:" << std::endl;
+                std::cout << decryptor.getKey() << std::endl;
+                std::cout << std::endl;
+
+                break;
+            case 6:
+                clearScreen();
+                return; // Back to Menu
+            case 7:
                 exit(0);
             default:
                 clearScreen();
