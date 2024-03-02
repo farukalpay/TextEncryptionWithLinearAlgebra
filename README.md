@@ -2,6 +2,11 @@
 
 This project implements a text encryption and decryption system using a matrix-based encryption technique. This project serves as an educational and practical exploration of matrix-based encryption techniques, demonstrating the fundamental concepts of encryption and decryption in a user-friendly manner.
 
+## How to implement this Library
+
+Download the repository and copy the library your local project folder then include `MatrixEncryptor.h`. After that you need to implement [Eigen](https://gitlab.com/libeigen/eigen) to your project. From the given link, only the folder Eigen is required. After putting it to your project folder, from your Project's Property Pages, `C/C++ -> General -> Additional Include Directories` add Eigen folder's path.
+
+
 ## Explanation of the Algorithm
 
 ### Convert Input String to ASCII Integer
