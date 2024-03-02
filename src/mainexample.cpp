@@ -6,7 +6,7 @@ int main() {
     MatrixEncryptor encryptor(3); // Create an encryptor with a 3x3 randomly generated key
 
     // Original message
-    std::string message = "Hello World";
+    std::string message = "Hi";
     // Encrypt the original message
     std::vector<int> encrypted_message = encryptor.encrypt(MatrixEncryptor::parseInput(message));
 
@@ -34,7 +34,7 @@ int main() {
     MatrixEncryptor encryptor_custom(customKey);
 
     // Another message to encrypt
-    std::string message_custom = "Faruk Alpay";
+    std::string message_custom = "hi";
     // Encrypt the custom message
     std::vector<int> encrypted_message_custom = encryptor_custom.encrypt(MatrixEncryptor::parseInput(message_custom));
 
