@@ -26,8 +26,6 @@ MatrixEncryptor::MatrixEncryptor(const Eigen::MatrixXd& customKey) : keyMatrix(c
 std::vector<int> MatrixEncryptor::encrypt(const std::vector<int>& message) const {
     int size = keyMatrix.rows();
     int messageSize = message.size();
-    std::cout << messageSize << std::endl;
-    std::cout << size << std::endl;
     int remainder = size - (messageSize % size);
     std::vector<int> paddedMessage = message;
     paddedMessage.insert(paddedMessage.end(), remainder, ' '); // Padding message with spaces to make its size a multiple of the key matrix size
