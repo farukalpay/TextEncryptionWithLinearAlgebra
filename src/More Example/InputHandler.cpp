@@ -9,7 +9,7 @@
 
 void clearScreen() {
 #ifdef _WIN32
-    //std::system("cls"); // Clear screen for Windows
+    std::system("cls"); // Clear screen for Windows
 #else
     std::system("clear"); // Clear screen for Unix-like systems
 #endif
