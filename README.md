@@ -4,8 +4,7 @@ This project implements a text encryption and decryption system using a matrix-b
 
 ## How to implement this Library
 
-Download the repository and copy the library your local project folder then include `MatrixEncryptor.h`. After that you need to implement [Eigen](https://gitlab.com/libeigen/eigen) to your project. From the given link, only the folder Eigen is required. After putting it to your project folder, from your Project's Property Pages, `C/C++ -> General -> Additional Include Directories` add Eigen folder's path.
-
+Clone the repository and copy the library your local project folder then include `MatrixEncryptor.h`. After that you need to implement [Eigen](https://gitlab.com/libeigen/eigen) to your project. From the given link, only the folder Eigen is required. After putting it to your project folder, from your Project's Property Pages, `C/C++ -> General -> Additional Include Directories` add Eigen folder's path.
 
 ## Explanation of the Algorithm
 
@@ -307,3 +306,9 @@ $$
 $$
 
 The decrypted message $D$ is obtained by converting each integer in the sequence to its corresponding ASCII character. Therefore, the decrypted message is $\text{"hi    "}$.
+
+## Example Runtime Screenshots
+###### Encryption
+![](https://raw.githubusercontent.com/farukalpay/TextEncryptionWithLinearAlgebra/gh-pages/img/encrypt.png)
+###### Decryption
+![](https://github.com/farukalpay/TextEncryptionWithLinearAlgebra/blob/gh-pages/img/decrypted.png)
