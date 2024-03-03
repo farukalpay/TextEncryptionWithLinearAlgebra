@@ -1,3 +1,5 @@
+[![Hits](https://hits.sh/github.com/farukalpay/TextEncryptionWithLinearAlgebra.svg)](https://hits.sh/github.com/farukalpay/TextEncryptionWithLinearAlgebra/)
+
 ## Introduction
 
 This project implements a text encryption and decryption system using a matrix-based encryption technique. This project serves as an educational and practical exploration of matrix-based encryption techniques, demonstrating the fundamental concepts of encryption and decryption in a user-friendly manner.
