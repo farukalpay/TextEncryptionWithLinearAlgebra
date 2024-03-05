@@ -3,6 +3,14 @@
 #include <iostream>
 #include <sstream>
 
+namespace {
+    inline void removeLastASCIISpaces(std::vector<int>& data) {
+        while (!data.empty() && data.back() == ' ') {
+            data.pop_back();
+        }
+    }
+}
+
 Eigen::MatrixXd MatrixEncryptor::generateRandomKey(int size) {
     Eigen::MatrixXd key(size, size);
     std::random_device rd;
@@ -31,7 +39,7 @@ std::vector<int> MatrixEncryptor::encrypt(const std::vector<int>& message) const
     paddedMessage.insert(paddedMessage.end(), remainder, ' '); // Padding message with spaces to make its size a multiple of the key matrix size
 
     std::vector<int> encrypted_message;
-    for (int i = 0; i < paddedMessage.size(); i += size) {
+    for (size_t i = 0; i < paddedMessage.size(); i += size) {
         Eigen::VectorXd messageVector(size);
         for (int j = 0; j < size; ++j) {
             messageVector(j) = paddedMessage[i + j];
@@ -46,7 +54,7 @@ std::vector<int> MatrixEncryptor::encrypt(const std::vector<int>& message) const
 
 std::vector<int> MatrixEncryptor::decrypt(const std::vector<int>& encrypted_message, int size) const {
     std::vector<int> decrypted_message;
-    for (int i = 0; i < encrypted_message.size(); i += size) {
+    for (size_t i = 0; i < encrypted_message.size(); i += size) {
         Eigen::VectorXd encryptedVector(size);
         for (int j = 0; j < size; ++j) {
             encryptedVector(j) = encrypted_message[i + j];
@@ -59,6 +67,7 @@ std::vector<int> MatrixEncryptor::decrypt(const std::vector<int>& encrypted_mess
             decrypted_message.push_back(decrypted_value);
         }
     }
+    removeLastASCIISpaces(decrypted_message);
     return decrypted_message;
 }
 
