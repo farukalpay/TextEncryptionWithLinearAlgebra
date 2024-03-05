@@ -1,7 +1,7 @@
 #ifndef MATRIXENCRYPTOR_H
 #define MATRIXENCRYPTOR_H
 
-#include <Eigen/Dense>
+#include "../Eigen/Dense"
 #include <vector>
 #include <string>
 

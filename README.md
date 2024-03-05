@@ -8,6 +8,34 @@ This project implements a text encryption and decryption system using a matrix-b
 
 Clone the repository and copy the library your local project folder then include `MatrixEncryptor.h`. After that you need to implement [Eigen](https://gitlab.com/libeigen/eigen) to your project. From the given link, only the folder Eigen is required. After putting it to your project folder, from your Project's Property Pages, `C/C++ -> General -> Additional Include Directories` add Eigen folder's path.
 
+## Getting started
+
+### Prerequisites
+Before getting started with **Text Encryption With Linear Algebra**, ensure that you have the following dependencies installed on your Linux system:
+- **g++ compiler**
+- [**Eigen library**](https://eigen.tuxfamily.org/index.php?title=Main_Page)
+
+### Installation
+To use the **Text Encryption With Linear Algebra**, follow these steps:
+
+1. Clone this repository
+```Bash
+git clone git@github.com:farukalpay/TextEncryptionWithLinearAlgebra.git
+```
+2. Clone the repository of Eigen Library:
+```Bash
+git clone https://gitlab.com/libeigen/eigen
+```
+3. Go inside the directory of Eigen Library and copy the directory Eigen into this repository
+```Bash
+cp -r <path-to-Eigen-directory> <path-to-this-repo>
+```
+4. Use the Makefile to compile with make
+```Bash
+make
+```
+5. Now you should see the executable in the directory of **Text Encryption With Linear Algebra** 
+
 ## Explanation of the Algorithm
 
 ### Convert Input String to ASCII Integer
